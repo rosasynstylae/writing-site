@@ -8,7 +8,8 @@ module.exports = {
     filename: "js/[name].js"
   },
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    disableHostCheck: true,
   },
   module: {
     rules: [
