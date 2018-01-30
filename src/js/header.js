@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
+import styled from 'styled-components';
+import enhance from '../data/helpers';
 import { Menu } from 'semantic-ui-react';
+import { compose } from 'redux'
+import { withFirestore } from 'react-redux-firebase'
 
 const Header = (props) => {
-    // props.init();
-    
     return (
         <Menu className={props.className}>
             <Menu.Item
@@ -31,24 +30,24 @@ const HeaderStyled = styled(Header)`
     margin-bottom: 0 !important;
 `
 
-export default HeaderStyled;
+class HeaderContainer extends React.Component {
+    componentDidMount() {
+        const { firestore } = this.props;
+        firestore.get('users')
+    }
+    
+    render() {
+        return (
+            <Header />
+        );
+    }
+}
 
-// const ms2p = (state) => {
-//     return {
-//         users: state.firestore.ordered.users,
-//     };
-// };
 
-// const md2p = (dispatch, getState, getFirebase) => {
-//     return {
-//         init: () => {
-//             const firebase = getFirebase();
-//             print(firebase.collection('users').get());
-//         },
-//     };
-// }
+const ms2p = (state) => {
+    return {
+        users: state.firestore.ordered.users,
+    };
+};
 
-// export default compose(
-//     firestoreConnect({ collection: 'users' }), // or { collection: 'todos' }
-//     connect(ms2p, md2p)
-// )(HeaderStyled);
+export default connect(ms2p)(withFirestore(HeaderContainer));
