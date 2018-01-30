@@ -38,7 +38,7 @@ class HeaderContainer extends React.Component {
     
     render() {
         return (
-            <Header />
+            <HeaderStyled />
         );
     }
 }
