@@ -53,12 +53,21 @@ const PagePusherStyled = styled(PagePusher)`
 `
 
 const Page = (props) => {
-    const { className, isSidebarVisible, ...contentProps } = props;
+    const {
+        className,
+        isSidebarVisible,
+        onContentClick,
+        ...contentProps
+    } = props;
+    const handleContentClick = isSidebarVisible ? onContentClick : null;
     
     return (
         <Sidebar.Pushable className={className}>
             <SidebarMenu isVisible={isSidebarVisible} />
-            <PagePusherStyled {...contentProps} />
+            <PagePusherStyled
+                onContentClick={handleContentClick}
+                {...contentProps}
+            />
         </Sidebar.Pushable>
     );
 }
