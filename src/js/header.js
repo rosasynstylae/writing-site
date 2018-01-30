@@ -11,7 +11,7 @@ const Header = (props) => {
                 onClick={props.handleSidebarOpen}
             />
             <Menu.Item>
-                Writing Site
+                Literatura Continens
             </Menu.Item>
             <Menu.Menu position='right'>
                 <Menu.Item>
