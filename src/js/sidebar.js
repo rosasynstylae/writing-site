@@ -11,6 +11,19 @@ import { PAGES } from '../data/constants';
  * The sidebar component. Holds the list of pages a user can visit.
  */
 const SidebarMenu = (props) => {
+    const menuItems = []; // a list of menu items to have in the sidebar
+    
+    // Add each "page" to the sidebar
+    for (const key in PAGES) {
+        const page = PAGES[key];
+        menuItems.push(
+            <Menu.Item key={key} name={page.name}>
+                <Icon name={page.icon} />
+                {page.title}
+            </Menu.Item>
+        );
+    }
+    
     return (
         <Sidebar
             as={Menu}
@@ -21,10 +34,7 @@ const SidebarMenu = (props) => {
             vertical
             inverted
         >
-            <Menu.Item name='home'>
-                <Icon name='home' />
-                Home
-            </Menu.Item>
+            {menuItems}
         </Sidebar>
     );
 }
