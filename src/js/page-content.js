@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import { PAGES } from '../data/constants';
 
 import PageTitle from './page-title';
-
 import Home from './home';
 
 const contentComponents = {
