@@ -9,6 +9,10 @@ import { Menu } from 'semantic-ui-react';
 
 import { setSidebarVisiblity } from '../data/ui-actions';
 
+/* Header:
+ * A component that works as a header for the site
+ * Holds things such as the user options menu and the sidebar toggle
+ */
 const Header = (props) => {
     // FIXME - better way to do this??
     // This clears out the passed event object, which binding does not do
@@ -48,6 +52,10 @@ const HeaderStyled = styled(Header)`
     margin-bottom: 0 !important;
 `
 
+/* HeaderContainer:
+ * A container for the header that initializes user data and passes along
+ * information from state
+ */
 class HeaderContainer extends React.Component {
     componentDidMount() {
         const { firestore } = this.props;

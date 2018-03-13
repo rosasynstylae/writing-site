@@ -1,8 +1,10 @@
 import { actionTypes } from './ui-actions';
-import { PAGES, PAGE_TITLES } from './constants';
+import { PAGES } from './constants';
 
 const defaultState = {
-    page: PAGES.HOME,
+    // which page we are currently on
+    page: PAGES.HOME.name,
+    // whether or not the sidebar is visible
     isSidebarVisible: false,
 }
 

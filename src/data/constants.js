@@ -3,10 +3,9 @@
 // keep this a v simple 1 page app. We would use "pages" to mostly keep track of
 // things such as which content component to render and which page title to use.
 export const PAGES = {
-    HOME: 'home',
-};
-
-/* A list of page titles, decided by page */
-export const PAGE_TITLES = {
-    [PAGES.HOME]: 'Home',
+    HOME: {
+        name: 'home',
+        title: 'Home',
+        icon: 'home',
+    },
 };

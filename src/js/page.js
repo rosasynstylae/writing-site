@@ -11,6 +11,12 @@ import { setSidebarVisiblity } from '../data/ui-actions';
 import SidebarMenu from './sidebar';
 import PageTitle from './page-title';
 
+
+/* InnerPage:
+ * A component used mostly for styling purposes, and so the sidebar pusher
+ * works correctly.
+ * Holdes the page title and the content of the page
+ */
 const InnerPage = (props) => (
     <div className={props.className} onClick={props.handleContentClick}>
         <PageTitle />
@@ -27,6 +33,11 @@ const InnerPageStyled = styled(InnerPage)`
     padding: 20px;
 `
 
+
+/* PagePusher:
+ * A component for the sidebar to "push" against. Has the content as a 
+ * subcomponent
+ */
 const PagePusher = (props) => (
     <Sidebar.Pusher
         className={props.className}
@@ -52,6 +63,11 @@ const PagePusherStyled = styled(PagePusher)`
     height: 100%;
 `
 
+
+/* Page:
+ * A component that represents a "page" in the system. Holds the content
+ * the user is currently viewing, and the sidebar
+ */
 export const Page = (props) => {
     const {
         className,
@@ -93,5 +109,4 @@ const md2p = (dispatch) => ({
     },
 });
 
-const PageSmart = connect(ms2p, md2p)(PageStyled);
-export default PageSmart;
+export default connect(ms2p, md2p)(PageStyled);
