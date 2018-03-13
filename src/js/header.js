@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
+import { withFirestore } from 'react-redux-firebase';
+
 import styled from 'styled-components';
-import enhance from '../data/helpers';
 import { Menu } from 'semantic-ui-react';
-import { compose } from 'redux'
-import { withFirestore } from 'react-redux-firebase'
+
+import { setSidebarVisiblity } from '../data/ui-actions';
 
 const Header = (props) => {
+    // FIXME - better way to do this??
+    // This clears out the passed event object, which binding does not do
+    const handleSidebarToggle = () => {
+        props.onSidebarToggle(!props.isSidebarVisible);
+    };
+    
     return (
         <Menu className={props.className}>
             <Menu.Item
                 icon='content'
-                onClick={props.handleSidebarOpen}
+                onClick={handleSidebarToggle}
             />
             <Menu.Item>
                 Literatura Continens
@@ -24,6 +32,16 @@ const Header = (props) => {
             </Menu.Menu>
         </Menu>
     );
+}
+
+Header.propTypes = {
+    onSidebarToggle: PropTypes.func.isRequired,
+    isSidebarVisible: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+};
+
+Header.defaultProps = {
+    className: '',
 }
 
 const HeaderStyled = styled(Header)`
@@ -38,16 +56,21 @@ class HeaderContainer extends React.Component {
     
     render() {
         return (
-            <HeaderStyled />
+            <HeaderStyled {...this.props} />
         );
     }
 }
 
 
-const ms2p = (state) => {
-    return {
-        users: state.firestore.ordered.users,
-    };
-};
+const ms2p = (state) => ({
+    users: state.firestore.ordered.users,
+    isSidebarVisible: state.ui.isSidebarVisible,
+});
 
-export default connect(ms2p)(withFirestore(HeaderContainer));
+const md2p = (dispatch) => ({
+    onSidebarToggle: (isVisible) => {
+        dispatch(setSidebarVisiblity(isVisible));
+    },
+});
+
+export default connect(ms2p, md2p)(withFirestore(HeaderContainer));
