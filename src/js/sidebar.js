@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Sidebar, Menu, Icon } from 'semantic-ui-react';
-import styled from 'styled-components';
 
 import { PAGES } from '../data/constants';
 
 
 /* SidebarMenu:
  * The sidebar component. Holds the list of pages a user can visit.
+ *
+ * Props:
+ * isVisibile (str, optional, default=False):
+ *     whether or not the sidebar is currently visible
  */
 const SidebarMenu = (props) => {
     const menuItems = []; // a list of menu items to have in the sidebar
@@ -47,7 +50,4 @@ SidebarMenu.defaultProps = {
     isVisible: false,
 };
 
-const SidebarMenuStyled = styled(SidebarMenu)`
-`;
-
-export default SidebarMenuStyled;
+export default SidebarMenu;
