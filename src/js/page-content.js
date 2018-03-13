@@ -10,8 +10,8 @@ import PageTitle from './page-title';
 
 import Home from './home';
 
-const contentComponent = {
-    [PAGES.HOME.name]: <Home />,
+const contentComponents = {
+    [PAGES.HOME.name]: Home,
 };
 
 
@@ -25,12 +25,19 @@ const contentComponent = {
  * page (str, optional, default=PAGES.HOME.name):
  *     what page to render content for - use PAGES.<page>.name
  */
-const PageContent = (props) => (
-    <div className={props.className}>
-        <PageTitle />
-        { contentComponent[props.page] }
-    </div>
-);
+const PageContent = (props) => {
+    // Allow for the passing of props to the content's component
+    const { className, page, ...contentProps } = props;
+    const ContentComponent = contentComponents[page];
+    
+    return (
+        <div className={className}>
+            <PageTitle />
+            <ContentComponent {...contentProps} />
+        </div>
+    );
+    
+};
 
 PageContent.propTypes = {
     className: PropTypes.string,
