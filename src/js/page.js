@@ -16,16 +16,19 @@ import PageTitle from './page-title';
  * A component used mostly for styling purposes, and so the sidebar pusher
  * works correctly.
  * Holdes the page title and the content of the page
+ *
+ * Props:
+ * className (str, optional):
+ *     to be used by styled-components for styling
  */
 const InnerPage = (props) => (
-    <div className={props.className} onClick={props.handleContentClick}>
+    <div className={props.className}>
         <PageTitle />
     </div>
 );
 
 InnerPage.propTypes = {
     className: PropTypes.string,
-    handleContentClick: PropTypes.func,
 };
 
 const InnerPageStyled = styled(InnerPage)`
@@ -38,26 +41,30 @@ const InnerPageStyled = styled(InnerPage)`
 /* PagePusher:
  * A component for the sidebar to "push" against. Has the content as a 
  * subcomponent
+ *
+ * Props:
+ * className (str, optional):
+ *     to be used by styled-components for styling
+ * onSidebarClose (func):
+ *     Function to call to close the sidebar
  */
 const PagePusher = (props) => (
     <Sidebar.Pusher
         className={props.className}
         onClick={props.onSidebarClose}
     >
-        <InnerPageStyled handleContentClick={props.onContentClick} />
+        <InnerPageStyled />
     </Sidebar.Pusher>
 );
 
 PagePusher.propTypes = {
     className: PropTypes.string,
     onSidebarClose: PropTypes.func,
-    onContentClick: PropTypes.func,
 };
 
 PagePusher.defaultProps = {
     className: '',
-    onSidebarClose: () => {},
-    onContentClick: () => {},
+    onSidebarClose: null,
 }
 
 const PagePusherStyled = styled(PagePusher)`
@@ -68,6 +75,15 @@ const PagePusherStyled = styled(PagePusher)`
 /* Page:
  * A component that represents a "page" in the system. Holds the content
  * the user is currently viewing, and the sidebar
+ *
+ * Props:
+ * className (str, optional):
+ *     to be used by styled-components for styling
+ * onSidebarClose (func):
+ *     Function to call to close the sidebar
+ * isSidebarVisible (bool, optional, default=False):
+ *     Whether or not the sidebar is currently visible - used to determine if
+ *     clicking on the content closes the sidebar or not.
  */
 export const Page = (props) => {
     const {
@@ -82,7 +98,7 @@ export const Page = (props) => {
         <Sidebar.Pushable className={className}>
             <SidebarMenu isVisible={isSidebarVisible} />
             <PagePusherStyled
-                onContentClick={handleContentClick}
+                onSidebarClose={handleContentClick}
                 {...contentProps}
             />
         </Sidebar.Pushable>
@@ -91,8 +107,12 @@ export const Page = (props) => {
 
 Page.propTypes = {
     className: PropTypes.string,
-    isSidebarVisible: PropTypes.bool.isRequired,
+    isSidebarVisible: PropTypes.bool,
     onSidebarClose: PropTypes.func.isRequired,
+};
+
+Page.defaultProps = {
+    isSidebarVisible: false,
 };
 
 export const PageStyled = styled(Page)`
