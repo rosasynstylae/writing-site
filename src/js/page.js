@@ -11,13 +11,11 @@ import { setSidebarVisiblity } from '../data/ui-actions';
 import SidebarMenu from './sidebar';
 import PageTitle from './page-title';
 
-const InnerPage = (props) => {
-    return (
-        <div className={props.className} onClick={props.handleContentClick}>
-            <PageTitle />
-        </div>
-    );
-}
+const InnerPage = (props) => (
+    <div className={props.className} onClick={props.handleContentClick}>
+        <PageTitle />
+    </div>
+);
 
 InnerPage.propTypes = {
     className: PropTypes.string,
@@ -29,16 +27,14 @@ const InnerPageStyled = styled(InnerPage)`
     padding: 20px;
 `
 
-const PagePusher = (props) => {
-    return (
-        <Sidebar.Pusher
-            className={props.className}
-            onClick={props.onSidebarClose}
-        >
-            <InnerPageStyled handleContentClick={props.onContentClick} />
-        </Sidebar.Pusher>
-    )
-}
+const PagePusher = (props) => (
+    <Sidebar.Pusher
+        className={props.className}
+        onClick={props.onSidebarClose}
+    >
+        <InnerPageStyled handleContentClick={props.onContentClick} />
+    </Sidebar.Pusher>
+);
 
 PagePusher.propTypes = {
     className: PropTypes.string,

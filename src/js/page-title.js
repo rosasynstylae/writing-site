@@ -6,15 +6,13 @@ import { Header } from 'semantic-ui-react';
 
 import { PAGE_TITLES } from '../data/constants';
 
-const PageTitle = (props) => {
-    return (
-        <Header as='h1'>{PAGE_TITLES[props.page]}</Header>
-    );
-}
+const PageTitle = (props) => (
+    <Header as='h1'>{PAGE_TITLES[props.page]}</Header>
+);
 
 PageTitle.propTypes = {
     page: PropTypes.string.isRequired,
-}
+};
 
 const ms2p = (state) => ({
     page: state.ui.page,

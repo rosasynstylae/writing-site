@@ -51,7 +51,7 @@ const HeaderStyled = styled(Header)`
 class HeaderContainer extends React.Component {
     componentDidMount() {
         const { firestore } = this.props;
-        firestore.get('users')
+        firestore.get('users');
     }
     
     render() {
