@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withFirestore } from 'react-redux-firebase';
 
 import styled from 'styled-components';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 
 import { setSidebarVisiblity } from '../data/ui-actions';
 
@@ -31,7 +31,8 @@ const Header = (props) => {
             </Menu.Item>
             <Menu.Menu position='right'>
                 <Menu.Item>
-                    User Stuff
+                    <Icon name='user' />
+                    { props.profile.displayName || props.profile.email || 'User'}
                 </Menu.Item>
             </Menu.Menu>
         </Menu>
@@ -73,6 +74,7 @@ class HeaderContainer extends React.Component {
 const ms2p = (state) => ({
     users: state.firestore.ordered.users,
     isSidebarVisible: state.ui.isSidebarVisible,
+    profile: state.firebase.profile,
 });
 
 const md2p = (dispatch) => ({
