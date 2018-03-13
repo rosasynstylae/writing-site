@@ -9,33 +9,7 @@ import styled from 'styled-components';
 import { setSidebarVisiblity } from '../data/ui-actions';
 
 import SidebarMenu from './sidebar';
-import PageTitle from './page-title';
-
-
-/* InnerPage:
- * A component used mostly for styling purposes, and so the sidebar pusher
- * works correctly.
- * Holdes the page title and the content of the page
- *
- * Props:
- * className (str, optional):
- *     to be used by styled-components for styling
- */
-const InnerPage = (props) => (
-    <div className={props.className}>
-        <PageTitle />
-    </div>
-);
-
-InnerPage.propTypes = {
-    className: PropTypes.string,
-};
-
-const InnerPageStyled = styled(InnerPage)`
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-`
+import PageContent from './page-content';
 
 
 /* PagePusher:
@@ -53,7 +27,7 @@ const PagePusher = (props) => (
         className={props.className}
         onClick={props.onSidebarClose}
     >
-        <InnerPageStyled />
+        <PageContent />
     </Sidebar.Pusher>
 );
 
