@@ -25,6 +25,7 @@ const InnerPage = (props) => (
 
 InnerPage.propTypes = {
     className: PropTypes.string,
+    handleContentClick: PropTypes.func,
 };
 
 const InnerPageStyled = styled(InnerPage)`

@@ -37,9 +37,17 @@ const SidebarMenu = (props) => {
             {menuItems}
         </Sidebar>
     );
-}
+};
+
+SidebarMenu.propTypes = {
+    isVisible: PropTypes.bool,
+};
+
+SidebarMenu.defaultProps = {
+    isVisible: false,
+};
 
 const SidebarMenuStyled = styled(SidebarMenu)`
-`
+`;
 
 export default SidebarMenuStyled;
