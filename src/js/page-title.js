@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { Header } from 'semantic-ui-react';
 
@@ -21,8 +20,4 @@ PageTitle.propTypes = {
     page: PropTypes.string.isRequired,
 };
 
-const ms2p = (state) => ({
-    page: state.ui.page,
-});
-
-export default connect(ms2p, () => ({}))(PageTitle);
+export default PageTitle;

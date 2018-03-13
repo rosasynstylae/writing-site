@@ -31,7 +31,7 @@ const PageContent = (props) => {
     
     return (
         <div className={className}>
-            <PageTitle />
+            <PageTitle page={page} />
             <ContentComponent {...contentProps} />
         </div>
     );
