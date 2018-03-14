@@ -9,3 +9,12 @@ export const PAGES = {
         icon: 'home',
     },
 };
+
+/* Themeing of colors */
+export const COLORS = {
+    GREEN: '#7ca794',
+    WHITE: '#fff',
+    THISTLE: '#bfbccb',
+    PURPLE: '#71697a',
+    RED: '#773344',
+}

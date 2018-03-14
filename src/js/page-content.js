@@ -50,7 +50,7 @@ PageContent.defaultProps = {
 const PageContentStyled = styled(PageContent)`
     height: 100%;
     width: 100%;
-    padding: 20px;
+    padding: 40px;
 `;
 
 const ms2p = (state) => ({

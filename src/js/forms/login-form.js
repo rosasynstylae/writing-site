@@ -3,38 +3,48 @@ import { Field, reduxForm } from 'redux-form'
 
 import { Message } from 'semantic-ui-react';
 
-import { renderField } from './fields';
+import { renderFieldStyled } from './fields';
+import Button from '../ui/button';
+
+import { COLORS } from '../../data/constants';
 
 const LoginForm = props => {
     const { 
         handleSubmit,
-        pristine,
-        reset,
         submitting,
         error,
         loginError,
     } = props;
     const errorMsg = error || loginError;
+    
     return (
         <form onSubmit={handleSubmit}>
             <Field
                 name="email"
                 type="email"
-                component={renderField}
-                label="Email"
+                component={renderFieldStyled}
+                label={{
+                    content: "Email",
+                    style: { background: COLORS.THISTLE }
+                }}
+                addMargin
+                fullWidth
             />
             <Field
                 name="password"
                 type="password"
-                component={renderField}
-                label="Password"
+                component={renderFieldStyled}
+                label={{
+                    content: "Password",
+                    style: { background: COLORS.THISTLE }
+                }}
+                addMargin
+                fullWidth
             />
             { errorMsg && <Message error content={errorMsg} /> }
-            <div>
-                <button type="submit" disabled={pristine || submitting}>
-                    Login
-                </button>
-            </div>
+            <Button type="submit" disabled={submitting}>
+                Login
+            </Button>
         </form>
     );
 };

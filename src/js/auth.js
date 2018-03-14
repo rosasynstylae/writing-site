@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withFirebase } from 'react-redux-firebase';
 
+import styled from 'styled-components';
+
 import LoginForm from './forms/login-form';
+import Header from './ui/header';
+
+import backgroundImg from '../images/typewriter1280.jpg';
 
 /* getLoginErrorMsg:
  * This function returns an error message given an error.
@@ -47,7 +52,9 @@ const Auth = (props) => {
         : null;
     
     return (
-        <div>
+        <div className={props.className}>
+            <Header as='h1'>Literatura Continens</Header>
+            <Header as='h2'>Please Login</Header>
             <LoginForm onSubmit={login} loginError={loginError} />
         </div>
     );
@@ -57,6 +64,41 @@ Auth.propTypes = {
     firebase: PropTypes.object.isRequired,
 };
 
+const AuthStyled = styled(Auth)`
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+`;
+
+
 const ms2p = ({ firebase: { authError } }) => ({ authError });
 
-export default connect(ms2p, () => ({}))(withFirebase(Auth));
+const AuthSmart = connect(ms2p, () => ({}))(withFirebase(AuthStyled));
+
+
+const AuthContainer = (props) => {
+    const { className, ...authProps } = props;
+    
+    return (
+        <div className={className}>
+            <AuthSmart {...authProps} />
+        </div>
+    );
+};
+
+
+const AuthContainerStyled = styled(AuthContainer)`
+    min-height: 100vh;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(${backgroundImg});
+    background-size: cover;
+`;
+
+export default AuthContainerStyled;
+

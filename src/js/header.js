@@ -8,6 +8,8 @@ import styled from 'styled-components';
 
 import { setSidebarVisiblity } from '../data/ui-actions';
 
+import TextHeader from './ui/header';
+
 /* Header:
  * A component that works as a header for the site
  * Holds things such as the user options menu and the sidebar toggle
@@ -52,7 +54,7 @@ const Header = (props) => {
                 onClick={handleSidebarToggle}
             />
             <Menu.Item>
-                Literatura Continens
+                <TextHeader fontSize='1em'>Literatura Continens</TextHeader>
             </Menu.Item>
             <Menu.Menu position='right'>
                 <Menu.Item>

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header } from 'semantic-ui-react';
-
 import { PAGES } from '../data/constants';
 import { findPage } from './helpers';
+
+import Header from './ui/header';
 
 /* PageTitle:
  * A component that renders a title for a page - will update automatically

@@ -1,13 +1,40 @@
 import React from 'react';
+import get from 'lodash/get';
 
-import { Input, Header } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
+import styled from 'styled-components';
 
-export const renderField = ({ input, label, type, meta: { touched, error } }) => (
-    <div>
-        <Header size='small'>{label}</Header>
-        <div>
-            <Input {...input} placeholder={label} type={type} />
-            {touched && error && <span>{error}</span>}
-        </div>
+/* renderField:
+ * A component for rendering fields for redux forms.
+ * Currently only supports text-based fields.
+ */
+export const renderField = ({
+    input,
+    label,
+    type,
+    meta: { touched, error },
+    className,
+}) => (
+    <div className={className}>
+        <Input
+            {...input}
+            label={label}
+            placeholder={get(label, 'content', label)}
+            type={type}
+        />
+        {touched && error && <span>{error}</span>}
     </div>
 );
+
+export const renderFieldStyled = styled(renderField)`
+    ${ props => props.addMargin ? 'margin: 10px 0;' : null }
+    ${ props => props.fullWidth 
+        ? `
+            width: 100%;
+            .input {
+                width: 100%;
+            }
+        `
+        : null
+    }
+`;
