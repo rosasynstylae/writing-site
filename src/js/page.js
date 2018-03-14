@@ -79,7 +79,6 @@ export const Page = (props) => {
 Page.propTypes = {
     className: PropTypes.string,
     isSidebarVisible: PropTypes.bool,
-    onSidebarClose: PropTypes.func.isRequired,
 };
 
 Page.defaultProps = {
