@@ -53,7 +53,7 @@ BaseLayout.propTypes = {
 
 const BaseLayoutStyled = styled(BaseLayout)`
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
 `;
 
 const ms2p = ({ firebase: { auth } }) => ({ auth });
