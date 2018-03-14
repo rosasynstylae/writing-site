@@ -4,22 +4,22 @@ import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducer';
 import { initFirebase } from './firebase';
+import firebaseConfig from '../config/firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import { reduxFirestore } from 'redux-firestore';
 
 const logger = createLogger();
 
 // react-redux-firebase config
-const rrfConfig = {
-    userProfile: 'users',
-   useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
-};
+// const rrfConfig = {
+//     userProfile: 'users',
+//     useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+// };
 
 const createStoreWithFirebase = compose(
-  reactReduxFirebase(initFirebase, rrfConfig),
+  reactReduxFirebase(initFirebase, firebaseConfig),
   reduxFirestore(initFirebase)
 )(createStore);
-
 
 const initialState = {};
 const store = createStoreWithFirebase(

@@ -13,11 +13,6 @@ import { COLORS } from '../data/constants';
 
 import backgroundImg from '../images/photography1280.jpg';
 
-        // const { firestore } = this.props;
-        // firestore.get('users');
-        
-        // withFirestore(Component)
-
 /* BaseLayout:
  * A component that handles laying out the page, as well as deciding whether or
  * not to show auth instead

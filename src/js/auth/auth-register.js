@@ -52,7 +52,7 @@ const AuthRegister = (props) => {
         
         props.firebase.createUser(
             { email, password },
-            { displayName, email }
+            { displayName }
         );
     };
     
