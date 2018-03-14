@@ -1,27 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
-import { withFirestore } from 'react-redux-firebase';
+import { withFirebase } from 'react-redux-firebase';
 
-import styled from 'styled-components';
 import { Menu, Icon } from 'semantic-ui-react';
+import styled from 'styled-components';
 
 import { setSidebarVisiblity } from '../data/ui-actions';
 
 /* Header:
  * A component that works as a header for the site
  * Holds things such as the user options menu and the sidebar toggle
+ *
+ * Props:
+ * className (str, optional):
+ *     to be used by styled-components for styling
+ * firebase (obj):
+ *     Firebase information/functionality. Passed by withFirebase.
+ * onSidebarToggle (func):
+ *     A function that toggles sidebar visibility.
+ * isSidebarVisible (bool):
+ *     Whether or not the sidebar is currently visible.
+ * profile (obj, optional):
+ *     The profile information from firebase.
  */
 const Header = (props) => {
+    const {
+        className,
+        firebase,
+        onSidebarToggle,
+        isSidebarVisible,
+        profile,
+    } = props;
     // FIXME - better way to do this??
     // This clears out the passed event object, which binding does not do
     const handleSidebarToggle = () => {
-        props.onSidebarToggle(!props.isSidebarVisible);
+        onSidebarToggle(!isSidebarVisible);
     };
     
+    // handle logout
+    const logout = () => {
+        firebase.logout();
+    };
+    
+    const displayName = profile.displayName || profile.email || 'User';
+    
     return (
-        <Menu className={props.className}>
+        <Menu className={className}>
             <Menu.Item
                 icon='content'
                 onClick={handleSidebarToggle}
@@ -32,7 +57,10 @@ const Header = (props) => {
             <Menu.Menu position='right'>
                 <Menu.Item>
                     <Icon name='user' />
-                    { props.profile.displayName || props.profile.email || 'User'}
+                    { displayName }
+                </Menu.Item>
+                <Menu.Item onClick={logout}>
+                    Logout
                 </Menu.Item>
             </Menu.Menu>
         </Menu>
@@ -42,37 +70,26 @@ const Header = (props) => {
 Header.propTypes = {
     onSidebarToggle: PropTypes.func.isRequired,
     isSidebarVisible: PropTypes.bool.isRequired,
+    firebase: PropTypes.func.isRequired,
+    profile: PropTypes.shape({
+        displayName: PropTypes.string,
+        email: PropTypes.string,
+    }),
     className: PropTypes.string,
 };
 
 Header.defaultProps = {
+    profile: {},
     className: '',
-}
+};
+
 
 const HeaderStyled = styled(Header)`
     margin-bottom: 0 !important;
-`
-
-/* HeaderContainer:
- * A container for the header that initializes user data and passes along
- * information from state
- */
-class HeaderContainer extends React.Component {
-    componentDidMount() {
-        const { firestore } = this.props;
-        firestore.get('users');
-    }
-    
-    render() {
-        return (
-            <HeaderStyled {...this.props} />
-        );
-    }
-}
+`;
 
 
 const ms2p = (state) => ({
-    users: state.firestore.ordered.users,
     isSidebarVisible: state.ui.isSidebarVisible,
     profile: state.firebase.profile,
 });
@@ -83,4 +100,4 @@ const md2p = (dispatch) => ({
     },
 });
 
-export default connect(ms2p, md2p)(withFirestore(HeaderContainer));
+export default connect(ms2p, md2p)(withFirebase(HeaderStyled));
