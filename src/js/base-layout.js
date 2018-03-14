@@ -9,6 +9,8 @@ import Header from './header';
 import Page from './page';
 import Auth from './auth';
 
+import { COLORS } from '../data/constants';
+
         // const { firestore } = this.props;
         // firestore.get('users');
         
@@ -54,6 +56,7 @@ BaseLayout.propTypes = {
 const BaseLayoutStyled = styled(BaseLayout)`
     min-height: 100vh;
     width: 100%;
+    background: ${COLORS.THISTLE};
 `;
 
 const ms2p = ({ firebase: { auth } }) => ({ auth });

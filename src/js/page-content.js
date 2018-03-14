@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 
-import { PAGES } from '../data/constants';
+import { PAGES, COLORS } from '../data/constants';
 
 import PageTitle from './page-title';
 import Home from './home';
@@ -51,6 +51,7 @@ const PageContentStyled = styled(PageContent)`
     height: 100%;
     width: 100%;
     padding: 40px;
+    background: ${COLORS.THISTLE};
 `;
 
 const ms2p = (state) => ({

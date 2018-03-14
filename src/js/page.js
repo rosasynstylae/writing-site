@@ -19,13 +19,10 @@ import PageContent from './page-content';
  * Props:
  * className (str, optional):
  *     to be used by styled-components for styling
- * onSidebarClose (func):
- *     Function to call to close the sidebar
  */
 const PagePusher = (props) => (
     <Sidebar.Pusher
         className={props.className}
-        onClick={props.onSidebarClose}
     >
         <PageContent />
     </Sidebar.Pusher>
@@ -33,16 +30,18 @@ const PagePusher = (props) => (
 
 PagePusher.propTypes = {
     className: PropTypes.string,
-    onSidebarClose: PropTypes.func,
 };
 
 PagePusher.defaultProps = {
     className: '',
-    onSidebarClose: null,
 }
 
 const PagePusherStyled = styled(PagePusher)`
     height: 100%;
+    ${ props => props.isSidebarVisible 
+        ? 'width: calc(100% - 150px);'
+        : null
+    }
 `
 
 
@@ -63,16 +62,14 @@ export const Page = (props) => {
     const {
         className,
         isSidebarVisible,
-        onSidebarClose,
         ...contentProps
     } = props;
-    const handleContentClick = isSidebarVisible ? onSidebarClose : null;
     
     return (
         <Sidebar.Pushable className={className}>
             <SidebarMenu isVisible={isSidebarVisible} />
             <PagePusherStyled
-                onSidebarClose={handleContentClick}
+                isSidebarVisible={isSidebarVisible}
                 {...contentProps}
             />
         </Sidebar.Pushable>
@@ -98,10 +95,4 @@ const ms2p = (state) => ({
     isSidebarVisible: state.ui.isSidebarVisible,
 });
 
-const md2p = (dispatch) => ({
-    onSidebarClose: () => {
-        dispatch(setSidebarVisiblity(false));
-    },
-});
-
-export default connect(ms2p, md2p)(PageStyled);
+export default connect(ms2p, ()=>({}))(PageStyled);

@@ -5,7 +5,7 @@ const defaultState = {
     // which page we are currently on
     page: PAGES.HOME.name,
     // whether or not the sidebar is visible
-    isSidebarVisible: false,
+    isSidebarVisible: true,
 }
 
 const uiReducer = (state = defaultState, action) => {

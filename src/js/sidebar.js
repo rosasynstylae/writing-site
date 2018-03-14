@@ -30,7 +30,7 @@ const SidebarMenu = (props) => {
     return (
         <Sidebar
             as={Menu}
-            animation='overlay'
+            animation='push'
             width='thin'
             visible={props.isVisible}
             icon='labeled'
@@ -47,7 +47,7 @@ SidebarMenu.propTypes = {
 };
 
 SidebarMenu.defaultProps = {
-    isVisible: false,
+    isVisible: true,
 };
 
 export default SidebarMenu;
