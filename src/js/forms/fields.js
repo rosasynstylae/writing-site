@@ -1,7 +1,7 @@
 import React from 'react';
 import get from 'lodash/get';
 
-import { Input } from 'semantic-ui-react';
+import { Input, Label } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 /* renderField:
@@ -21,8 +21,9 @@ export const renderField = ({
             label={label}
             placeholder={get(label, 'content', label)}
             type={type}
+            error={error && touched}
         />
-        {touched && error && <span>{error}</span>}
+        {touched && error && <Label pointing basic color='red'>{error}</Label>}
     </div>
 );
 

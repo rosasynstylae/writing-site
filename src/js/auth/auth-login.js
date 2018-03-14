@@ -56,6 +56,14 @@ const AuthLogin = (props) => {
     );
 }
 
+AuthLogin.propTypes = {
+    firebase: PropTypes.shape({
+        login: PropTypes.func,
+    }).isRequired,
+    authError: PropTypes.shape({
+        code: PropTypes.string,
+    }),
+};
 
 const ms2p = ({ firebase: { authError } }) => ({ authError });
 

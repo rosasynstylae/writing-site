@@ -4,6 +4,8 @@ import { Field, reduxForm } from 'redux-form'
 import { Message } from 'semantic-ui-react';
 
 import { renderFieldStyled } from './fields';
+import { isRequired } from './validation';
+
 import Button from '../ui/button';
 
 import { COLORS } from '../../data/constants';
@@ -27,6 +29,7 @@ const LoginForm = props => {
                     content: "Email",
                     style: { background: COLORS.THISTLE }
                 }}
+                validate={[isRequired]}
                 addMargin
                 fullWidth
             />
@@ -38,6 +41,7 @@ const LoginForm = props => {
                     content: "Password",
                     style: { background: COLORS.THISTLE }
                 }}
+                validate={[isRequired]}
                 addMargin
                 fullWidth
             />
