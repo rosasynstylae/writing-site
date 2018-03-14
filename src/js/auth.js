@@ -68,7 +68,7 @@ const AuthStyled = styled(Auth)`
     background: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 10px;
-    width: 400px;
+    width: 425px;
 `;
 
 

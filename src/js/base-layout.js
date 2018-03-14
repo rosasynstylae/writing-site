@@ -78,4 +78,8 @@ export default connect(ms2p, () => ({}))(BaseLayoutStyled);
  */
 injectGlobal`
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+html {
+    font-size: 15px;
+}
 `;
