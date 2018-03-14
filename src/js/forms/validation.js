@@ -11,3 +11,13 @@ export const isRequired = (value) => (
         ? 'Required'
         : undefined
 );
+
+/* isMinLength:
+ * This functions insists that a field have at least "length" number of
+ * characters
+ */
+export const isMinLength = (length) => ((value) => (
+    value && (value.trim().length < length) && (value.trim().length > 0)
+        ? `Must be at least ${length} characters long`
+        : undefined
+));

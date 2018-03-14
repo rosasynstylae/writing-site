@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { setRegistering } from '../../data/ui-actions';
 
 import AuthLogin from './auth-login';
+import AuthRegister from './auth-register';
 import Header from '../ui/header';
 import Link from '../ui/span-link';
 
@@ -45,7 +46,7 @@ const AuthToggleInfoStyled = styled(AuthToggleInfo)`
  */
 const Auth = (props) => {
     const authInfo = props.auth.isRegistering 
-        ? <div></div>
+        ? <AuthRegister />
         : <AuthLogin />;
     
     return (
