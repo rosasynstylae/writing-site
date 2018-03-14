@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import Header from './header';
 import Page from './page';
-import Auth from './auth';
+import AuthPage from './auth/auth-page';
 
 import { COLORS } from '../data/constants';
 
@@ -32,7 +32,7 @@ const BaseLayout = (props) => {
     const { auth, className } = props;
     // determine whether we should show content, or the login/register info
     const DisplayComponent = isLoaded(auth) && isEmpty(auth) 
-        ? <Auth />
+        ? <AuthPage />
         : (
             <React.Fragment>
                 <Header />

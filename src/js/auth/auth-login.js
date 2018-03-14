@@ -3,12 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withFirebase } from 'react-redux-firebase';
 
-import styled from 'styled-components';
-
-import LoginForm from './forms/login-form';
-import Header from './ui/header';
-
-import backgroundImg from '../images/typewriter1280.jpg';
+import LoginForm from '../forms/login-form';
+import Header from '../ui/header';
 
 /* getLoginErrorMsg:
  * This function returns an error message given an error.
@@ -31,14 +27,15 @@ const getLoginErrorMsg = (error) => {
     }
 };
 
-/* Auth:
- * A component that holds the login/register content
+
+/* AuthLogin:
+ * A component that holds the login content
  *
  * Props:
  * firebase (obj):
  *     Firebase information/functionality. Passed by withFirebase.
  */
-const Auth = (props) => {
+const AuthLogin = (props) => {
     const login = (values) => {
         const { email, password } = values;
         
@@ -52,53 +49,14 @@ const Auth = (props) => {
         : null;
     
     return (
-        <div className={props.className}>
-            <Header as='h1'>Literatura Continens</Header>
+        <React.Fragment>
             <Header as='h2'>Please Login</Header>
             <LoginForm onSubmit={login} loginError={loginError} />
-        </div>
+        </React.Fragment>
     );
-};
-
-Auth.propTypes = {
-    firebase: PropTypes.object.isRequired,
-};
-
-const AuthStyled = styled(Auth)`
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 10px;
-    width: 425px;
-`;
+}
 
 
 const ms2p = ({ firebase: { authError } }) => ({ authError });
 
-const AuthSmart = connect(ms2p, () => ({}))(withFirebase(AuthStyled));
-
-
-const AuthContainer = (props) => {
-    const { className, ...authProps } = props;
-    
-    return (
-        <div className={className}>
-            <AuthSmart {...authProps} />
-        </div>
-    );
-};
-
-
-const AuthContainerStyled = styled(AuthContainer)`
-    min-height: 100vh;
-    width: 100vw;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url(${backgroundImg});
-    background-size: cover;
-`;
-
-export default AuthContainerStyled;
-
+export default connect(ms2p, () => ({}))(withFirebase(AuthLogin));

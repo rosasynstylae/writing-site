@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import { Sidebar } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-import { setSidebarVisiblity } from '../data/ui-actions';
-
 import SidebarMenu from './sidebar';
 import PageContent from './page-content';
 

@@ -1,3 +1,5 @@
+import merge from 'lodash/merge'
+
 import { actionTypes } from './ui-actions';
 import { PAGES } from './constants';
 
@@ -6,13 +8,21 @@ const defaultState = {
     page: PAGES.HOME.name,
     // whether or not the sidebar is visible
     isSidebarVisible: true,
+    // handle auth-page ui decisions
+    auth: {
+        isRegistering: false,
+    }
 }
 
 const uiReducer = (state = defaultState, action) => {
     switch (action.type) {
         case actionTypes.SET_SIDEBAR_VISIBLITY:
-            return Object.assign({}, state, {
+            return merge({}, state, {
                 isSidebarVisible: action.payload,
+            });
+        case actionTypes.SET_REGISTERING:
+            return merge({}, state, {
+                auth: { isRegistering: action.payload },
             });
         default:
             return state;
