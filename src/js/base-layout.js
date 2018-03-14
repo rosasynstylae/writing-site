@@ -11,6 +11,8 @@ import Auth from './auth';
 
 import { COLORS } from '../data/constants';
 
+import backgroundImg from '../images/photography1280.jpg';
+
         // const { firestore } = this.props;
         // firestore.get('users');
         
@@ -56,7 +58,14 @@ BaseLayout.propTypes = {
 const BaseLayoutStyled = styled(BaseLayout)`
     min-height: 100vh;
     width: 100%;
-    background: ${COLORS.THISTLE};
+    /* faking background color "tint" with gradient */ 
+    background:
+        linear-gradient(
+          rgba(255, 255, 255, 0.8), 
+          rgba(255, 255, 255, 0.8)
+        ),
+        url(${backgroundImg});
+    background-size: cover;
 `;
 
 const ms2p = ({ firebase: { auth } }) => ({ auth });

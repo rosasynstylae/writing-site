@@ -51,7 +51,6 @@ const PageContentStyled = styled(PageContent)`
     height: 100%;
     width: 100%;
     padding: 40px;
-    background: ${COLORS.THISTLE};
 `;
 
 const ms2p = (state) => ({
