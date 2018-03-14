@@ -9,6 +9,11 @@ import Header from './header';
 import Page from './page';
 import Auth from './auth';
 
+        // const { firestore } = this.props;
+        // firestore.get('users');
+        
+        // withFirestore(Component)
+
 /* BaseLayout:
  * A component that handles laying out the page, as well as deciding whether or
  * not to show auth instead

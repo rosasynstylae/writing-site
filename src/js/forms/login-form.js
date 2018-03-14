@@ -1,10 +1,20 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+import { Message } from 'semantic-ui-react';
+
 import { renderField } from './fields';
 
 const LoginForm = props => {
-    const { handleSubmit, pristine, reset, submitting } = props
+    const { 
+        handleSubmit,
+        pristine,
+        reset,
+        submitting,
+        error,
+        loginError,
+    } = props;
+    const errorMsg = error || loginError;
     return (
         <form onSubmit={handleSubmit}>
             <Field
@@ -19,6 +29,7 @@ const LoginForm = props => {
                 component={renderField}
                 label="Password"
             />
+            { errorMsg && <Message error content={errorMsg} /> }
             <div>
                 <button type="submit" disabled={pristine || submitting}>
                     Login
