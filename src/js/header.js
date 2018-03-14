@@ -70,7 +70,9 @@ const Header = (props) => {
 Header.propTypes = {
     onSidebarToggle: PropTypes.func.isRequired,
     isSidebarVisible: PropTypes.bool.isRequired,
-    firebase: PropTypes.func.isRequired,
+    firebase: PropTypes.shape({
+        logout: PropTypes.func,
+    }).isRequired,
     profile: PropTypes.shape({
         displayName: PropTypes.string,
         email: PropTypes.string,
