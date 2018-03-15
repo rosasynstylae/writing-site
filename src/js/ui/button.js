@@ -8,4 +8,8 @@ import { COLORS } from '../../data/constants';
 export default styled(Button)`
     background: ${COLORS.GREEN} !important;
     color: ${COLORS.WHITE} !important;
+    
+    &:hover {
+        background: ${COLORS.DARK_GREEN} !important;
+    }
 `;

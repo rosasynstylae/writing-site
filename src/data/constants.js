@@ -8,6 +8,11 @@ export const PAGES = {
         title: 'Home',
         icon: 'home',
     },
+    UNIVERSES: {
+        name: 'universes',
+        title: 'Universes',
+        icon: 'world',
+    }
 };
 
 /* Themeing of colors */

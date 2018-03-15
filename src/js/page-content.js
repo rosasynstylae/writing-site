@@ -7,10 +7,12 @@ import styled from 'styled-components';
 import { PAGES, COLORS } from '../data/constants';
 
 import PageTitle from './page-title';
-import Home from './home';
+import Home from './pages/home';
+import Universes from './pages/universes';
 
 const contentComponents = {
     [PAGES.HOME.name]: Home,
+    [PAGES.UNIVERSES.name]: Universes,
 };
 
 

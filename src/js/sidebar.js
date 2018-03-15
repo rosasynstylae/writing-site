@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Sidebar, Menu, Icon } from 'semantic-ui-react';
 
 import { PAGES } from '../data/constants';
+import { setCurrentPage } from '../data/ui-actions';
 
 
 /* SidebarMenu:
@@ -20,7 +22,7 @@ const SidebarMenu = (props) => {
     for (const key in PAGES) {
         const page = PAGES[key];
         menuItems.push(
-            <Menu.Item key={key} name={page.name}>
+            <Menu.Item key={key} onClick={props.onItemClick.bind(this, page.name)}>
                 <Icon name={page.icon} />
                 {page.title}
             </Menu.Item>
@@ -50,4 +52,15 @@ SidebarMenu.defaultProps = {
     isVisible: true,
 };
 
-export default SidebarMenu;
+
+const ms2p = (state) => ({
+    page: state.ui.page,
+});
+
+const md2p = (dispatch, ownProps) => ({
+    onItemClick: (page) => {
+        dispatch(setCurrentPage(page));
+    },
+});
+
+export default connect(ms2p, md2p)(SidebarMenu);

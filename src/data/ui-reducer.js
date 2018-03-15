@@ -24,6 +24,10 @@ const uiReducer = (state = defaultState, action) => {
             return merge({}, state, {
                 auth: { isRegistering: action.payload },
             });
+        case actionTypes.SET_CURRENT_PAGE:
+            return merge({}, state, {
+                page: action.payload,
+            });
         default:
             return state;
     }
