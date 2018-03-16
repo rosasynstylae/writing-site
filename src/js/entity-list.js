@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { List, Message } from 'semantic-ui-react';
+import { List, Message, Segment } from 'semantic-ui-react';
 import Button from './ui/button';
 
 /* EntityList:
@@ -28,13 +28,13 @@ const EntityList = (props) => {
     }
     
     return (
-        <div>
+        <Segment>
             <Button onClick={onAdd.bind(this, null)}>Add</Button>
             <List relaxed divided>
                 {emptyMessage}
                 {listItems}
             </List>
-        </div>
+        </Segment>
     );
 };
 
