@@ -14,6 +14,8 @@ const EntityList = (props) => {
         ? <Message content='No Items to Show' />
         : null;
     
+    // Fixme - should we just use a forEach or map here? This made perfect sense
+    // when it was an object, but now that it's an array we have more options
     for (const entity of entities) {
         listItems.push(
             <EntityListItem
