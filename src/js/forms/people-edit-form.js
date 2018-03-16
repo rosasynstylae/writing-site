@@ -33,8 +33,6 @@ const PeopleEditForm = props => {
         );
     }
     
-    console.log(universeOptions);
-    
     return (
         <Form style={{width: '50%'}} onSubmit={handleSubmit}>
             <Field
