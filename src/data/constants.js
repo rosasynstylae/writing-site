@@ -18,6 +18,7 @@ export const PAGES = {
 /* Themeing of colors */
 export const COLORS = {
     GREEN: '#7ca794',
+    GREEN_DARK: '#638576',
     WHITE: '#fff',
     THISTLE: '#bfbccb',
     PURPLE: '#71697a',

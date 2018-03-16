@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withFirebase, withFirestore } from 'react-redux-firebase';
+import { withFirestore } from 'react-redux-firebase';
 
 import { Menu, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -34,11 +34,6 @@ const Header = (props) => {
         isSidebarVisible,
         profile,
     } = props;
-    // FIXME - better way to do this??
-    // This clears out the passed event object, which binding does not do
-    const handleSidebarToggle = () => {
-        onSidebarToggle(!isSidebarVisible);
-    };
     
     // handle logout
     const logout = () => {
@@ -47,13 +42,11 @@ const Header = (props) => {
     
     const displayName = profile.displayName || profile.email || 'User';
     
-    props.listUsers();
-    
     return (
         <Menu className={className}>
             <Menu.Item
                 icon='content'
-                onClick={handleSidebarToggle}
+                onClick={onSidebarToggle.bind(this, !isSidebarVisible)}
             />
             <Menu.Item>
                 <TextHeader fontSize='1em'>Literatura Continens</TextHeader>
@@ -104,10 +97,6 @@ const md2p = (dispatch, ownProps) => ({
     onSidebarToggle: (isVisible) => {
         dispatch(setSidebarVisiblity(isVisible));
     },
-    listUsers: () => {
-        const { firestore } = ownProps;
-        firestore.get('users/w24Bnosw4Zg2GGzv6m96X8PhR1F2');
-    },
 });
 
-export default withFirestore(connect(ms2p, md2p)(withFirebase(HeaderStyled)));
+export default connect(ms2p, md2p)(withFirestore(HeaderStyled));

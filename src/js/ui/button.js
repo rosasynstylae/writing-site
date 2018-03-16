@@ -10,6 +10,6 @@ export default styled(Button)`
     color: ${COLORS.WHITE} !important;
     
     &:hover {
-        background: ${COLORS.DARK_GREEN} !important;
+        background: ${COLORS.GREEN_DARK} !important;
     }
 `;
