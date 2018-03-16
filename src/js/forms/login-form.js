@@ -29,7 +29,7 @@ const LoginForm = props => {
                     content: "Email",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
             />
@@ -41,7 +41,7 @@ const LoginForm = props => {
                     content: "Password",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
             />

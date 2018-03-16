@@ -32,7 +32,7 @@ const RegisterForm = props => {
                     content: "Email",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
             />
@@ -44,7 +44,7 @@ const RegisterForm = props => {
                     content: "Password",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired, isMinLength6]}
                 addMargin
             />
@@ -56,7 +56,7 @@ const RegisterForm = props => {
                     content: "Retype Password",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired, isMinLength6]}
                 addMargin
             />
@@ -68,7 +68,7 @@ const RegisterForm = props => {
                     content: "Name",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 addMargin
             />
             { errorMsg && <Message error content={errorMsg} /> }

@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 
 import { Message, Form } from 'semantic-ui-react';
 
-import { renderFieldStyled, renderSelectField } from './fields';
+import { renderFieldStyled, renderSelectFieldStyled } from './fields';
 import { isRequired } from './validation';
 
 import Button from '../ui/button';
@@ -26,11 +26,14 @@ const PeopleEditForm = props => {
         const universe = universes[key];
         universeOptions.push(
             {
+                key,
                 text: universe.name,
-                value: universe.key,
+                value: key,
             }
         );
     }
+    
+    console.log(universeOptions);
     
     return (
         <Form style={{width: '50%'}} onSubmit={handleSubmit}>
@@ -42,18 +45,30 @@ const PeopleEditForm = props => {
                     content: "Name",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
             />
             <Field
+                name="title"
+                type="text"
+                component={renderFieldStyled}
+                label={{
+                    content: "Title",
+                    style: { background: COLORS.THISTLE }
+                }}
+                extraProps={{ fluid: true }}
+                addMargin
+            />
+            <Field
                 name="universe"
-                component={renderSelectField}
+                component={renderSelectFieldStyled}
                 label={{
                     content: "Universe",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true, options: universeOptions }}
+                extraProps={{ fluid: true, options: universeOptions }}
+                validate={[isRequired]}
                 addMargin
             />
             { error && <Message error content={error} /> }

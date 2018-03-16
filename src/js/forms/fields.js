@@ -14,10 +14,12 @@ export const renderField = ({
     type,
     meta: { touched, error },
     className,
+    extraProps,
 }) => (
     <div className={className}>
         <Input
             {...input}
+            {...extraProps}
             label={label}
             placeholder={get(label, 'content', label)}
             type={type}
@@ -42,13 +44,16 @@ export const renderSelectField = ({
     type,
     meta: { touched, error },
     className,
+    extraProps,
 }) => (
     <div className={className}>
         <Select
             {...input}
+            {...extraProps}
             selection
             placeholder={get(label, 'content', label)}
             error={error && touched}
+            onChange={(param,data) => input.onChange(data.value)}
         />
         {touched && error && <Label pointing basic color='red'>{error}</Label>}
     </div>

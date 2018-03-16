@@ -20,7 +20,7 @@ const EntityEdit = (props) => {
         user,
         headerField,
         entity,
-        onSubmit,
+        ...formProps
     } = props;
     const header = entity && entity[headerField] 
         ? (<Header as='h3'>{entity[headerField]}</Header>)
@@ -34,7 +34,7 @@ const EntityEdit = (props) => {
             <EditForm
                 form={`entityEditForm${id}`}
                 initialValues={initialValues}
-                onSubmit={onSubmit}
+                {...formProps}
             />
         </div>
     );
@@ -58,9 +58,13 @@ const ms2p = (state, ownProps) => {
                 null
             )
         : null;
+    const universes = ownProps.useUniverses
+        ? state.firestore.data.universes
+        : null;
     
     return {
         entity,
+        universes,
         user: state.firebase.auth.uid,
     };
 };

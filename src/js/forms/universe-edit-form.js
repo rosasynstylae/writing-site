@@ -29,7 +29,7 @@ const UniverseEditForm = props => {
                     content: "Name",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
             />
@@ -41,7 +41,7 @@ const UniverseEditForm = props => {
                     content: "Description",
                     style: { background: COLORS.THISTLE }
                 }}
-                input={{ fluid: true }}
+                extraProps={{ fluid: true }}
                 addMargin
             />
             { error && <Message error content={error} /> }

@@ -37,7 +37,7 @@ const PeopleListItem = (props) => (
         <List.Icon name='user' size='big' verticalAlign='middle' />
         <List.Content>
             <Header as='h4'>{props.name}</Header>
-            <List.Description as='p'>{props.description}</List.Description>
+            <List.Description as='p'>{props.title}</List.Description>
         </List.Content>
     </List.Item>
 );
@@ -71,6 +71,7 @@ const PeoplePage = (props) => {
                 id={page.currentEntity}
                 EditForm={PeopleEditForm}
                 onSubmit={onSubmit}
+                useUniverses
             />)
         : (<EntityList
                 EntityListItem={PeopleListItem}
