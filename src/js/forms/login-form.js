@@ -29,9 +29,9 @@ const LoginForm = props => {
                     content: "Email",
                     style: { background: COLORS.THISTLE }
                 }}
+                input={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
-                fullWidth
             />
             <Field
                 name="password"
@@ -41,9 +41,9 @@ const LoginForm = props => {
                     content: "Password",
                     style: { background: COLORS.THISTLE }
                 }}
+                input={{ fluid: true }}
                 validate={[isRequired]}
                 addMargin
-                fullWidth
             />
             { errorMsg && <Message error content={errorMsg} /> }
             <Button type="submit" disabled={submitting}>

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { COLORS } from '../../data/constants';
 
-export default styled(Button)`
+export const GreenButton = styled(Button)`
     background: ${COLORS.GREEN} !important;
     color: ${COLORS.WHITE} !important;
     
@@ -13,3 +13,15 @@ export default styled(Button)`
         background: ${COLORS.GREEN_DARK} !important;
     }
 `;
+
+
+export const RedButton = styled(Button)`
+    background: ${COLORS.RED} !important;
+    color: ${COLORS.WHITE} !important;
+    
+    &:hover {
+        background: ${COLORS.RED_LIGHT} !important;
+    }
+`;
+
+export default GreenButton;

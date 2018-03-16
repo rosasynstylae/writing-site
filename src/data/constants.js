@@ -12,6 +12,11 @@ export const PAGES = {
         name: 'universes',
         title: 'Universes',
         icon: 'world',
+    },
+    PEOPLE: {
+        name: 'people',
+        title: 'People',
+        icon: 'user',
     }
 };
 
@@ -23,4 +28,5 @@ export const COLORS = {
     THISTLE: '#bfbccb',
     PURPLE: '#71697a',
     RED: '#773344',
+    RED_LIGHT: '#925b69',
 }

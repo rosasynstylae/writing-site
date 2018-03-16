@@ -8,11 +8,13 @@ import { PAGES, COLORS } from '../data/constants';
 
 import PageTitle from './page-title';
 import Home from './pages/home';
-import Universes from './pages/universes';
+import UniversesPage from './pages/universes';
+import PeoplePage from './pages/people';
 
 const contentComponents = {
     [PAGES.HOME.name]: Home,
-    [PAGES.UNIVERSES.name]: Universes,
+    [PAGES.UNIVERSES.name]: UniversesPage,
+    [PAGES.PEOPLE.name]: PeoplePage,
 };
 
 
