@@ -84,7 +84,12 @@ const UniversesPage = (props) => {
 };
 
 UniversesPage.propTypes = {
-    entities: PropTypes.object,
+    entities: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        id: PropTypes.string,
+        user: PropTypes.string,
+        description: PropTypes.string,
+    })),
     page: PropTypes.shape({
         isEdit: PropTypes.bool,
         currentEntity: PropTypes.string,
@@ -94,11 +99,11 @@ UniversesPage.propTypes = {
 };
 
 UniversesPage.defaultProps = {
-    entities: {},
+    entities: [],
 };
 
 const ms2p = (state) => ({
-    entities: state.firestore.data.universes,
+    entities: state.firestore.ordered.universes,
     page: state.ui.pageContent,
 });
 

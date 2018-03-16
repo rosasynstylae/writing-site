@@ -10,25 +10,17 @@ import Button from './ui/button';
 const EntityList = (props) => {
     const { EntityListItem, entities, onAdd, onEdit, onDelete } = props;
     const listItems = [];
-    const emptyMessage = !entities
+    const emptyMessage = !entities.length
         ? <Message content='No Items to Show' />
         : null;
-    // FIXME - pull out any deleted entities. this feels dirty.
-    const correctEntities = [];
-    for (const key in entities) {
-        if (entities[key]) {
-            correctEntities.push(key);
-        }
-    }
     
-    for (const key of correctEntities) {
+    for (const entity of entities) {
         listItems.push(
             <EntityListItem
-                key={key}
-                id={key}
+                key={entity.id}
                 onEdit={onEdit}
                 onDelete={onDelete}
-                {...entities[key]}
+                {...entity}
             />
         );
     }
@@ -45,13 +37,15 @@ const EntityList = (props) => {
 };
 
 EntityList.propTypes = {
-    entities: PropTypes.object,
+    entities: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string
+    })),
     onAdd: PropTypes.func,
     onEdit: PropTypes.func,
 };
 
 EntityList.defaultProps = {
-    entities: {},
+    entities: [],
 }
 
 export default EntityList;

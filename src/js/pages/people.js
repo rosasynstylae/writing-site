@@ -85,7 +85,12 @@ const PeoplePage = (props) => {
 };
 
 PeoplePage.propTypes = {
-    entities: PropTypes.object,
+    entities: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        id: PropTypes.string,
+        user: PropTypes.string,
+        title: PropTypes.string,
+    })),
     page: PropTypes.shape({
         isEdit: PropTypes.bool,
         currentEntity: PropTypes.string,
@@ -95,11 +100,11 @@ PeoplePage.propTypes = {
 };
 
 PeoplePage.defaultProps = {
-    entities: {},
+    entities: [],
 };
 
 const ms2p = (state) => ({
-    entities: state.firestore.data.people,
+    entities: state.firestore.ordered.people,
     page: state.ui.pageContent,
 });
 
