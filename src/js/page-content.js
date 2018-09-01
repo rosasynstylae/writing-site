@@ -12,11 +12,10 @@ import UniversesPage from './pages/universes';
 import PeoplePage from './pages/people';
 
 const contentComponents = {
-    [PAGES.HOME.name]: Home,
-    [PAGES.UNIVERSES.name]: UniversesPage,
-    [PAGES.PEOPLE.name]: PeoplePage,
+  [PAGES.HOME.name]: Home,
+  [PAGES.UNIVERSES.name]: UniversesPage,
+  [PAGES.PEOPLE.name]: PeoplePage,
 };
-
 
 /* PageContent:
  * A component used to set up the page content
@@ -28,37 +27,39 @@ const contentComponents = {
  * page (str, optional, default=PAGES.HOME.name):
  *     what page to render content for - use PAGES.<page>.name
  */
-const PageContent = (props) => {
-    // Allow for the passing of props to the content's component
-    const { className, page, ...contentProps } = props;
-    const ContentComponent = contentComponents[page];
-    
-    return (
-        <div className={className}>
-            <PageTitle page={page} />
-            <ContentComponent {...contentProps} />
-        </div>
-    );
-    
+const PageContent = props => {
+  // Allow for the passing of props to the content's component
+  const { className, page, ...contentProps } = props;
+  const ContentComponent = contentComponents[page];
+
+  return (
+    <div className={className}>
+      <PageTitle page={page} />
+      <ContentComponent {...contentProps} />
+    </div>
+  );
 };
 
 PageContent.propTypes = {
-    className: PropTypes.string,
-    page: PropTypes.string,
+  className: PropTypes.string,
+  page: PropTypes.string,
 };
 
 PageContent.defaultProps = {
-    page: PAGES.HOME.name,
+  page: PAGES.HOME.name,
 };
 
 const PageContentStyled = styled(PageContent)`
-    height: 100%;
-    width: 100%;
-    padding: 40px;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
 `;
 
-const ms2p = (state) => ({
-    page: state.ui.page,
+const ms2p = state => ({
+  page: state.ui.page,
 });
 
-export default connect(ms2p, () => ({}))(PageContentStyled);
+export default connect(
+  ms2p,
+  () => ({}),
+)(PageContentStyled);

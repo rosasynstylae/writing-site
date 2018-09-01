@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import SidebarMenu from './sidebar';
 import PageContent from './page-content';
 
-
 /* PagePusher:
  * A component for the sidebar to "push" against. Has the content as a 
  * subcomponent
@@ -18,30 +17,24 @@ import PageContent from './page-content';
  * className (str, optional):
  *     to be used by styled-components for styling
  */
-const PagePusher = (props) => (
-    <Sidebar.Pusher
-        className={props.className}
-    >
-        <PageContent />
-    </Sidebar.Pusher>
+const PagePusher = props => (
+  <Sidebar.Pusher className={props.className}>
+    <PageContent />
+  </Sidebar.Pusher>
 );
 
 PagePusher.propTypes = {
-    className: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PagePusher.defaultProps = {
-    className: '',
-}
+  className: '',
+};
 
 const PagePusherStyled = styled(PagePusher)`
-    height: 100%;
-    ${ props => props.isSidebarVisible 
-        ? 'width: calc(100% - 150px);'
-        : null
-    }
-`
-
+  height: 100%;
+  ${props => (props.isSidebarVisible ? 'width: calc(100% - 150px);' : null)};
+`;
 
 /* Page:
  * A component that represents a "page" in the system. Holds the content
@@ -56,40 +49,36 @@ const PagePusherStyled = styled(PagePusher)`
  *     Whether or not the sidebar is currently visible - used to determine if
  *     clicking on the content closes the sidebar or not.
  */
-export const Page = (props) => {
-    const {
-        className,
-        isSidebarVisible,
-        ...contentProps
-    } = props;
-    
-    return (
-        <Sidebar.Pushable className={className}>
-            <SidebarMenu isVisible={isSidebarVisible} />
-            <PagePusherStyled
-                isSidebarVisible={isSidebarVisible}
-                {...contentProps}
-            />
-        </Sidebar.Pushable>
-    );
-}
+export const Page = props => {
+  const { className, isSidebarVisible, ...contentProps } = props;
+
+  return (
+    <Sidebar.Pushable className={className}>
+      <SidebarMenu isVisible={isSidebarVisible} />
+      <PagePusherStyled isSidebarVisible={isSidebarVisible} {...contentProps} />
+    </Sidebar.Pushable>
+  );
+};
 
 Page.propTypes = {
-    className: PropTypes.string,
-    isSidebarVisible: PropTypes.bool,
+  className: PropTypes.string,
+  isSidebarVisible: PropTypes.bool,
 };
 
 Page.defaultProps = {
-    isSidebarVisible: false,
+  isSidebarVisible: false,
 };
 
 export const PageStyled = styled(Page)`
-    margin-top: 0 !important;
-    height: calc(100vh - 42px);
-`
+  margin-top: 0 !important;
+  height: calc(100vh - 42px);
+`;
 
-const ms2p = (state) => ({
-    isSidebarVisible: state.ui.isSidebarVisible,
+const ms2p = state => ({
+  isSidebarVisible: state.ui.isSidebarVisible,
 });
 
-export default connect(ms2p, ()=>({}))(PageStyled);
+export default connect(
+  ms2p,
+  () => ({}),
+)(PageStyled);

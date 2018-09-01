@@ -18,16 +18,16 @@ const logger = createLogger();
 
 const createStoreWithFirebase = compose(
   reactReduxFirebase(initFirebase, firebaseConfig),
-  reduxFirestore(initFirebase)
+  reduxFirestore(initFirebase),
 )(createStore);
 
 const initialState = {};
 const store = createStoreWithFirebase(
-    rootReducer,
-    initialState,
-    composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(getFirebase), logger)
-    ),
+  rootReducer,
+  initialState,
+  composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(getFirebase), logger),
+  ),
 );
 
 export default store;

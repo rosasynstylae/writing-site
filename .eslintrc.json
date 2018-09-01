@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "for-direction": "error",
+    "getter-return": "error",
+    "no-compare-neg-zero": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-unreachable": "error",
+    "use-isnan": "error",
+    "class-methods-use-this": "error",
+    "no-return-assign": "error",
+    "no-unused-expressions": "error",
+    "no-console": "error",
+    "no-debugger": "error",
+    "no-empty": "error",
+    "no-magic-numbers": "error",
+    "dot-notation": "error",
+    "dot-location": ["error", "property"],
+    "eqeqeq": "error",
+    "no-extra-bind": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-proto": "error",
+    "no-unused-vars": "error",
+    "no-constant-condition": "error",
+    "no-duplicate-case": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "jsx-quotes": ["error", "prefer-single"],
+    "no-array-constructor": "error",
+    "no-nested-ternary": "error",
+    "no-unneeded-ternary": "error",
+    "no-new-object": "error",
+    "max-len": ["error", { "code": 80 }]
+  }
+}

@@ -2,7 +2,6 @@
  */
 import actionCreator from './helpers';
 
-
 /** Action Typess */
 const SET_SIDEBAR_VISIBLITY = 'SET_SIDEBAR_VISIBLITY';
 const SET_REGISTERING = 'SET_REGISTERING';
@@ -10,12 +9,12 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const EDIT_ENTITY = 'EDIT_ENTITY';
 const LIST_ENTITIES = 'LIST_ENTITIES';
 
-export const actionTypes = { 
-    SET_SIDEBAR_VISIBLITY,
-    SET_REGISTERING,
-    SET_CURRENT_PAGE,
-    EDIT_ENTITY,
-    LIST_ENTITIES,
+export const actionTypes = {
+  SET_SIDEBAR_VISIBLITY,
+  SET_REGISTERING,
+  SET_CURRENT_PAGE,
+  EDIT_ENTITY,
+  LIST_ENTITIES,
 };
 
 /** Actions */
