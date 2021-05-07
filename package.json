@@ -40,7 +40,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "file-loader": "^1.1.11",
     "firebase": "^4.9.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "react-redux": "^5.0.6",
     "react-redux-firebase": "^2.0.2",
     "redux": "^3.7.2",
